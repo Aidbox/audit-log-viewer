@@ -1,0 +1,3 @@
+{ns audit-log-viewer
+
+ foo {:zen/tags #{zen/tag}}}
