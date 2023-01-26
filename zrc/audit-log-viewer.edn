@@ -7,4 +7,15 @@
   :resourceType    "AuditEventR5"
   :type            zen/map
   :validation-type :open}
+
+ seed-user
+ {:zen/tags #{aidbox/service}
+  :engine   aidbox/seed-v2
+  :resources
+  {:User
+   {:delete-me
+    {:email    "foo@bar.com"
+     :active   false
+     :password "password"}}}}
+
  }
