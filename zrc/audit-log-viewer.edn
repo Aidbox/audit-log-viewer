@@ -1,4 +1,10 @@
 {ns audit-log-viewer
+ import #{zenbox}
 
- ban {:zen/tags #{zen/tag}}
+ AuditEventR5
+ {:zen/tags        #{zen/schema zenbox/persistent}
+  :confirms        #{zenbox/Resource}
+  :resourceType    "AuditEventR5"
+  :type            zen/map
+  :validation-type :open}
  }
