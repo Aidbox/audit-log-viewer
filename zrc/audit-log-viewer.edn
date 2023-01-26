@@ -1,5 +1,10 @@
 {ns audit-log-viewer
- import #{zenbox}
+ import #{aidbox
+          zenbox}
+
+ entrypoint
+ {:zen/tags #{aidbox/system}
+  :services {:seed-user seed-user}}
 
  AuditEventR5
  {:zen/tags        #{zen/schema zenbox/persistent}
