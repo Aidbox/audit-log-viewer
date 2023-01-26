@@ -1,3 +1,5 @@
 {ns audit-log-viewer
 
- foo {:zen/tags #{zen/tag}}}
+ foo {:zen/tags #{zen/tag}}
+ bar {:zen/tags #{zen/tag}}
+ }
