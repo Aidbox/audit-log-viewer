@@ -1,9 +1,31 @@
-{ns audit-log-viewer
+{ns     audit-log-viewer
  import #{aidbox
+          aidbox.search-parameter.v1
+          aidbox.repository.v1
           zenbox}
 
  entrypoint
- {:zen/tags #{aidbox/system}}
+ {:zen/tags #{aidbox/system}
+  #_#_:services {:repositories repositories}}
+
+ audit-event-date-search-param
+ {:zen/tags   #{aidbox.search-parameter.v1/search-parameter}
+  :name       "date"
+  :type       :date
+  :resource   {:resourceType "Entity" :id "AuditEventR5"}
+  :expression [[:recorded]]}
+
+ audit-event-repository
+ {:zen/tags                #{aidbox.repository.v1/repository}
+  :resourceType            "AuditEventR5"
+  :extra-parameter-sources :all
+  :search-parameters       #{audit-event-date-search-param}}
+
+ repositories
+ {:zen/tags     #{aidbox/service}
+  :engine       aidbox.repository.v1/engine
+  :repositories #{audit-event-repository}
+  :load-default true}
 
  AuditEventR5
  {:zen/tags        #{zen/schema zenbox/persistent}
