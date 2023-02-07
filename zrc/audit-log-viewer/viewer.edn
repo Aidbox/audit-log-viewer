@@ -1,0 +1,12 @@
+{ns     audit-log-viewer.viewer
+ import #{zenbox
+          audit}
+
+ table-view
+ {:zen/tags #{audit/table-layout}
+  :columns
+  [{:name "Date" :path [:recorded] :fallback "—"}
+   {:name "User" :path [:agent 0 :who :identifier :value]}
+   {:name "Event" :path [:code :coding 0 :display]}
+   {:name "Patient" :path [:patient :reference] :fallback "—"}]}
+ }

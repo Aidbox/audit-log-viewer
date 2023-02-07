@@ -2,6 +2,7 @@
  import #{aidbox
           aidbox.search-parameter.v1
           aidbox.repository.v1
+          audit-log-viewer.viewer
           zenbox}
 
  entrypoint
