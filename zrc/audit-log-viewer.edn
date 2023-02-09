@@ -7,6 +7,7 @@
 
  entrypoint
  {:zen/tags #{aidbox/system}
+  :services {:audit-event-r5 audit-event-r5}
   #_#_:services {:repositories repositories}}
 
  audit-event-date-search-param
@@ -28,10 +29,14 @@
   :repositories #{audit-event-repository}
   :load-default true}
 
- AuditEventR5
- {:zen/tags        #{zen/schema zenbox/persistent}
-  :confirms        #{zenbox/Resource}
-  :resourceType    "AuditEventR5"
-  :type            zen/map
-  :validation-type :open}
+ audit-event-r5
+ {:zen/tags #{aidbox/service}
+  :engine aidbox/seed-v2
+  :resources {:Entity
+              {:AuditEventR5
+               {:type "resource"
+                :isOpen true}
+               :Partition
+               {:type "resource"
+                :isOpen true}}}}
  }
