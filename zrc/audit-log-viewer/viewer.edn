@@ -13,7 +13,22 @@
 
   :views
   [{:when [[[:category {} :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110114"]
-           [[:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110122"]]
-    :view [:div [:h1 "I'm the login event"]]}]
-  }
- }
+           [[:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110122"]
+           [[:outcome :code :system] "http://terminology.hl7.org/CodeSystem/audit-event-outcome"]
+           [[:outcome :code :code ] "success"]]
+    :view [:div
+           [:table
+            [:tr
+             [:th "Cattegory Id"]
+             [:th "Code Id"]
+             [:th "The mood"]]
+            [:tr
+             [:td (get-in [:category 0 :coding 0 :code])]
+             [:td (get-in [:code :coding 0 :code])]
+             [:td [:img {:src "https://newfastuff.com/wp-content/uploads/2019/05/NxFQM6O-150x150.png"}]]]]]}
+
+   {:when [[[:category {} :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110114"]
+           [[:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110123"]]
+    :view [:div
+           [:h1 "Logout user"]
+           [:img {:src "https://i.pinimg.com/236x/a9/c6/72/a9c67251f5c92d35cf15a5fe2f9b6ec1.jpg"}]]}]}}
