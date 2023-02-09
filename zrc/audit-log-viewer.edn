@@ -9,7 +9,8 @@
 
  entrypoint
  {:zen/tags #{aidbox/system}
-  :services {:repositories repositories
+  :services {#_#_:repositories repositories
+             :audit-event-r5 audit-event-r5
              :task-service awf.task/task-service
              :aidbox-long-pool-executor-service awf.executor/aidbox-long-pool-executor-service
              :aidbox-decisions-executor-service awf.executor/aidbox-decisions-pool-executor-service}}
@@ -33,10 +34,14 @@
   :repositories #{audit-event-repository}
   :load-default true}
 
- AuditEventR5
- {:zen/tags        #{zen/schema zenbox/persistent}
-  :confirms        #{zenbox/Resource}
-  :resourceType    "AuditEventR5"
-  :type            zen/map
-  :validation-type :open}
+ audit-event-r5
+ {:zen/tags #{aidbox/service}
+  :engine aidbox/seed-v2
+  :resources {:Entity
+              {:AuditEventR5
+               {:type "resource"
+                :isOpen true}
+               :Partition
+               {:type "resource"
+                :isOpen true}}}}
  }
