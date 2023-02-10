@@ -13,7 +13,8 @@
              :audit-event-r5 audit-event-r5
              :task-service awf.task/task-service
              :aidbox-long-pool-executor-service awf.executor/aidbox-long-pool-executor-service
-             :aidbox-decisions-executor-service awf.executor/aidbox-decisions-pool-executor-service}}
+             :aidbox-decisions-executor-service awf.executor/aidbox-decisions-pool-executor-service
+             :demo-fixtures audit-log-viewer.demo-fixtures}}
 
  audit-event-date-search-param
  {:zen/tags   #{aidbox.search-parameter.v1/search-parameter}
@@ -35,13 +36,8 @@
   :load-default true}
 
  audit-event-r5
- {:zen/tags #{aidbox/service}
-  :engine aidbox/seed-v2
+ {:zen/tags  #{aidbox/service}
+  :engine    aidbox/seed-v2
   :resources {:Entity
-              {:AuditEventR5
-               {:type "resource"
-                :isOpen true}
-               :Partition
-               {:type "resource"
-                :isOpen true}}}}
- }
+              {:AuditEventR5 {:type "resource" :isOpen true}
+               :Partition    {:type "resource" :isOpen true}}}}}

@@ -2,55 +2,50 @@
  import #{zenbox
           audit}
 
-
  table-view
  {:zen/tags #{audit/table-layout}
   :columns
-  [{:name "Date" :path [:recorded] :fallback "—"}
-   {:name "User" :path [:agent 0 :who :identifier :value]}
+  [{:name "Date" :path [:occuredDateTime] :fallback "—"}
    {:name "Event" :path [:code :coding 0 :display]}
+   {:name "Outcome" :path [:outcome :code :display]}
+   {:name "User" :path [:agent 0 :who :display]}
    {:name "Patient" :path [:patient :reference] :fallback "—"}]
 
   :views
   [{:when [[[:category {} :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110114"]
            [[:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110122"]
            [[:outcome :code :system] "http://terminology.hl7.org/CodeSystem/audit-event-outcome"]
-           [[:outcome :code :code ] "success"]]
+           [[:outcome :code :code] "4"]]
+    :col  [{:path [:agent 0 :who :identifier :value] :name "User id"}
+           {:path [:agent 0 :who :display] :name "User name"}
+           {:path [:occuredDateTime] :name "Login attempt timestamp"}
+           {:path [:outcome :code :display] :name "Login status"}
+           {:path [:agent 1 :networkString] :name "Login device"}
+           {:path [:source :observer :identifier :value] :name "Login attempt to / System"}
+           {:path [:source :observer :display] :name "Login attempt to / Service"}]}
 
-    :col [{:path [:agent 0 :who :display] :name "User"}
-          {:path [:agent 0 :who :identifier :value] :name "User id"}
-          {:path [:recorded] :name "Login timestamp"}
+   {:when [[[:category {} :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110114"]
+           [[:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110122"]
+           [[:outcome :code :system] "http://terminology.hl7.org/CodeSystem/audit-event-outcome"]
+           [[:outcome :code :code ] "0"]]
+    :col [{:path [:agent 0 :who :identifier :value] :name "User id"}
+          {:path [:agent 0 :who :display] :name "User"}
+          {:path [:occuredDateTime] :name "Login timestamp"}
           {:path [:outcome :code :display] :name "Login status"}
           {:path [:agent 1 :networkString] :name "Login device"}
           {:path [:source :observer :identifier :value] :name "Login to / System"}
           {:path [:source :observer :display] :name "Login to / Service"}]}
 
    {:when [[[:category {} :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110114"]
-           [[:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110123"]]
-    :view [:div
-           [:h1 "Logout user"]
-           [:img {:src "https://i.pinimg.com/236x/a9/c6/72/a9c67251f5c92d35cf15a5fe2f9b6ec1.jpg"}]]}
+           [[:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110123"]
+           [[:outcome :code :system] "http://terminology.hl7.org/CodeSystem/audit-event-outcome"]
+           [[:outcome :code :code ] "0"]]
+    :col [{:path [:agent 0 :who :identifier :value] :name "User id"}
+          {:path [:agent 0 :who :display] :name "User"}
+          {:path [:occuredDateTime] :name "Logout timestamp"}
+          {:path [:outcome :code :display] :name "Logout status"}
+          {:path [:agent 1 :networkString] :name "Logout device"}
+          {:path [:source :observer :identifier :value] :name "Logout from / System"}
+          {:path [:source :observer :display] :name "Login from / Service"}]}
 
-   {:when [[[:category {} :coding {:system "http://terminology.hl7.org/CodeSystem/audit-event-type"} :code] "rest"]
-           [[:code :coding {:system "http://hl7.org/fhir/restful-interaction"} :code] "search"]]
-
-    :view [:div
-           [:h1 "This is search"]
-           [:br]
-           [:p [:span [:strong "Query "] (get-in [:entity 0 :query])]]
-           [:br]
-           [:h1 "Agent"]
-           [:ol
-            (for [agent (get-in [:agent])]
-              (let [display (get-in agent [:who :display])
-                    id-value (get-in agent [:who :identifier :value])
-                    id-system (get-in agent [:who :identifier :system])]
-                [:li "— "
-                 (cond
-                   (and display id-value)
-                   [:span [:strong "Internal id "] [:span display "/" id-value]]
-
-                   (and id-system id-value)
-                   [:span [:strong "Id "] id-value " in the " [:strong "external system "] id-system]
-
-                   :else "not clarified")]))]]}]}}
+   ]}}
