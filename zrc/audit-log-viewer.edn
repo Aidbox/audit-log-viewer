@@ -12,9 +12,9 @@
  {:zen/tags #{aidbox/system}
   :services {#_#_:repositories repositories
              :audit-event-r5 audit-event-r5
-             :task-service awf.task/task-service
-             :aidbox-long-pool-executor-service awf.executor/aidbox-long-pool-executor-service
-             :aidbox-decisions-executor-service awf.executor/aidbox-decisions-pool-executor-service
+             ;; :task-service awf.task/task-service
+             ;; :aidbox-long-pool-executor-service awf.executor/aidbox-long-pool-executor-service
+             ;; :aidbox-decisions-executor-service awf.executor/aidbox-decisions-pool-executor-service
              :demo-fixtures audit-log-viewer.demo-fixtures/fixtures}}
 
  audit-event-date-search-param
