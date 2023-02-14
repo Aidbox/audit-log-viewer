@@ -12,10 +12,10 @@
    {:name "Patient" :path [:patient :reference] :fallback "—"}]
 
   :views
-  [{:when [[[:category {} :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110114"]
-           [[:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110122"]
-           [[:outcome :code :system] "http://terminology.hl7.org/CodeSystem/audit-event-outcome"]
-           [[:outcome :code :code] "4"]]
+  [{:when [{:path [:category {} :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] :value "110114" }
+           {:path [:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] :value "110122"}
+           {:path [:outcome :code :system] :value "http://terminology.hl7.org/CodeSystem/audit-event-outcome" }
+           {:path [:outcome :code :code] :value "4"}]
     :col  [{:path [:agent 0 :who :identifier :value] :name "User id"}
            {:path [:agent 0 :who :display] :name "User name"}
            {:path [:occuredDateTime] :name "Login attempt timestamp"}
@@ -24,10 +24,10 @@
            {:path [:source :observer :identifier :value] :name "Login attempt to / System"}
            {:path [:source :observer :display] :name "Login attempt to / Service"}]}
 
-   {:when [[[:category {} :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110114"]
-           [[:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110122"]
-           [[:outcome :code :system] "http://terminology.hl7.org/CodeSystem/audit-event-outcome"]
-           [[:outcome :code :code ] "0"]]
+   {:when [{:path [:category {} :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] :value "110114" }
+           {:path [:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] :value "110122"}
+           {:path [:outcome :code :system] :value "http://terminology.hl7.org/CodeSystem/audit-event-outcome" }
+           {:path [:outcome :code :code ] :value "0"}]
     :col [{:path [:agent 0 :who :identifier :value] :name "User id"}
           {:path [:agent 0 :who :display] :name "User"}
           {:path [:occuredDateTime] :name "Login timestamp"}
@@ -36,16 +36,15 @@
           {:path [:source :observer :identifier :value] :name "Login to / System"}
           {:path [:source :observer :display] :name "Login to / Service"}]}
 
-   {:when [[[:category {} :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110114"]
-           [[:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] "110123"]
-           [[:outcome :code :system] "http://terminology.hl7.org/CodeSystem/audit-event-outcome"]
-           [[:outcome :code :code ] "0"]]
+   {:when [{:path [:category {} :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] :value "110114"}
+           {:path [:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] :value "110123"}
+           {:path [:outcome :code :system] :value "http://terminology.hl7.org/CodeSystem/audit-event-outcome" }
+           {:path [:outcome :code :code ] :value "0"}]
+
     :col [{:path [:agent 0 :who :identifier :value] :name "User id"}
           {:path [:agent 0 :who :display] :name "User"}
           {:path [:occuredDateTime] :name "Logout timestamp"}
           {:path [:outcome :code :display] :name "Logout status"}
           {:path [:agent 1 :networkString] :name "Logout device"}
           {:path [:source :observer :identifier :value] :name "Logout from / System"}
-          {:path [:source :observer :display] :name "Login from / Service"}]}
-
-   ]}}
+          {:path [:source :observer :display] :name "Login from / Service"}]}]}}
