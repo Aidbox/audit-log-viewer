@@ -47,4 +47,30 @@
           {:path [:outcome :code :display] :name "Logout status"}
           {:path [:agent 1 :networkString] :name "Logout device"}
           {:path [:source :observer :identifier :value] :name "Logout from / System"}
-          {:path [:source :observer :display] :name "Login from / Service"}]}]}}
+          {:path [:source :observer :display] :name "Login from / Service"}]}
+
+   {:when [{:path [:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] :value "110131"}
+           {:path [:outcome :code :system] :value "http://terminology.hl7.org/CodeSystem/audit-event-outcome" }
+           {:path [:outcome :code :code ] :value "0"}]
+
+    :col [{:path [:agent 0 :who :identifier :value] :name "User id"}
+          {:path [:agent 0 :who :display] :name "User"}
+          {:path [:agent 1 :networkString] :name "Workstation"}
+          {:path [:occuredDateTime] :name "Timestamp"}
+          {:path [:entity 0 :what :display] :name "Re-configured application"}
+          {:path [:entity 0 :what :identifier :value] :name "Re-configured application URL"}]}
+
+   {:when [{:path [:category {} :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] :value "110139"}
+           {:path [:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] :value "110122"}
+           {:path [:outcome :code :system] :value "http://terminology.hl7.org/CodeSystem/audit-event-outcome" }
+           {:path [:outcome :code :code ] :value "0"}]
+
+    :col [{:path [:occuredDateTime] :name "Remote Login timestamp"}
+          {:path [:outcome :code :display] :name "Login status"}
+          {:path [:agent 1 :networkString] :name "Login device"}
+          {:path [:agent 0 :who :identifier :value] :name "User id"}
+          {:path [:agent 0 :who :display] :name "User"}
+          {:path [:source :observer :identifier :value] :name "Remote login to / System"}
+          {:path [:source :observer :display] :name "Remote login to / Service"}]}
+
+   ]}}
