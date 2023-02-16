@@ -189,9 +189,9 @@
       {:display    "Cloud"
        :identifier {:value "cloud.example.com"}}}
      :entity
-     {:what
-      {:display    "Aidbox"
-       :identifier {:value "aidbox.example.com"}}}}
+     [{:what
+       {:display    "Aidbox"
+        :identifier {:value "aidbox.example.com"}}}]}
 
     :example-remote-login-success
     {:id              "example-remote-login-success"
