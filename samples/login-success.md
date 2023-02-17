@@ -1,4 +1,4 @@
-# Logout success
+# Login success
 
 Based on the [example login](http://build.fhir.org/audit-event-example-login.html).
 
@@ -44,7 +44,7 @@ outcome:
     display: Success
 
 agent:
-# in common user should be a person
+# user should be a person
 - who:
     reference: '#person'
   requestor: true
@@ -67,11 +67,11 @@ agent:
   networkUri: ... # IP address in the internal network
 
 contained:
+- id: 'person'
+  resourceType: 'Person'
 - id: 'user-agent'
   resourceType: 'Device'
   displayName: '<USER_AGENT>'
 - id: 'idp'
   resourceType: 'Device'
-- id: 'person'
-  resourceType: 'Person'
 ```
