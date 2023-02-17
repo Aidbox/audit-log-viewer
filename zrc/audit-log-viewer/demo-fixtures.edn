@@ -189,10 +189,7 @@
       {:display    "Cloud"
        :identifier {:value "cloud.example.com"}}}
      :entity
-     [{:what
-       {:display "fhir.aidbox.app"
-        :reference
-        {:resourceType "Device" :id "example-software-as-device-aidbox"}}}]}
+     [{:what {:resourceType "Device" :id "example-software-as-device"}}]}
 
     :example-remote-login-success
     {:id              "example-remote-login-success"
