@@ -2,6 +2,8 @@
 
 Base on the [example login](http://build.fhir.org/audit-event-example-login.html).
 
+<img width="841" alt="Screenshot 2023-02-17 at 16 35 17" src="https://user-images.githubusercontent.com/1931520/219697684-3bdaeecd-615f-4363-8edd-2e8f1b2b46ac.png">
+
 ```yaml
 id: example-login-failure
 resourceType: AuditEventR5
@@ -73,3 +75,4 @@ contained:
   resourceType: 'Device'
   ...
 ```
+
