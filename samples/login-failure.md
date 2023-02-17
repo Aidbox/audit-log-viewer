@@ -1,6 +1,6 @@
 # Login failure
 
-Base on the [example login](http://build.fhir.org/audit-event-example-login.html).
+Based on the [example login](http://build.fhir.org/audit-event-example-login.html).
 
 > Failed USER login attempts via local or network
 
