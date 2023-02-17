@@ -10,11 +10,11 @@ This [Aidbox configuration project](https://docs.aidbox.app/aidbox-configuration
 
 This repo contains the set of `AuditEvent` resource samples. Each sample is based on the public example or created from scratch. In the latter case, the form of the event is validated with the FHIR community.
 
-| What should be audited             | Example event id                                |
-| ---------------------------------- | ----------------------------------------------- |
-| User fails to login                | `:example-login-failure`                        |
-| User logins                        | `:example-login-success`                        |
-| User logs out                      | `:example-logout-success`                       |
-| User remote session starts         | `:example-remote-login-success`                 |
-| User remote session ends           | `:example-remote-logout-success`                |
-| Software configuration was updated | `:example-service-event-software-configuration` |
+### Significant event samples
+
+- [User fails to login](samples/login-failure.md)
+- [User logins in](samples/login-success.md)
+- [User logs out](samples/logout-success.md)
+- [Remote session starts](samples/remote-login-success.md)
+- [Remote session end](samples/remote-logout-success.md)
+- [Software configuration was updated](samples/software-configuration-updated.md)
