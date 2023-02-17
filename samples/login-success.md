@@ -1,39 +1,77 @@
 # Logout success
 
-Base on the (example login)[http://build.fhir.org/audit-event-example-login.html].
+Based on the [example login](http://build.fhir.org/audit-event-example-login.html).
+
+<img width="841" alt="Screenshot 2023-02-17 at 16 35 17" src="https://user-images.githubusercontent.com/1931520/219697684-3bdaeecd-615f-4363-8edd-2e8f1b2b46ac.png">
 
 ```yaml
-resourceType: AuditEventR5
 id: example-logout-success
+resourceType: AuditEventR5
+
 occuredDateTime: '2022-01-01T23:31:23Z'
+
 recorded: '2023-02-10T11:22:33Z'
+
 action: E
-category:
-- coding:
-  - {code: '110114', system: 'http://dicom.nema.org/resources/ontology/DCM', display: User Authentication}
-code:
-  coding:
-  - {code: '110123', system: 'http://dicom.nema.org/resources/ontology/DCM', display: Logout}
-outcome:
-  code: {code: '0', system: 'http://terminology.hl7.org/CodeSystem/audit-event-outcome', display: Success}
+
 source:
   type:
   - coding:
-    - {code: '3', system: 'http://terminology.hl7.org/CodeSystem/security-source-type', display: Web Server}
+    - code: '6'
+      system: 'http://terminology.hl7.org/CodeSystem/security-source-type'
+      display: 'Security Server'
   observer:
-    display: Cloud
-    identifier: {value: hl7connect.healthintersections.com.au}
+    display: Keycloak
+    identifier:
+      value: keycloak.example.com ????
+
+category:
+- coding:
+  - code: '110114'
+    system: 'http://dicom.nema.org/resources/ontology/DCM'
+    display: User Authentication
+
+code:
+  coding:
+  - code: '110123'
+    system: 'http://dicom.nema.org/resources/ontology/DCM'
+    display: Logout
+
+outcome:
+  code:
+    code: '0'
+    system: 'http://terminology.hl7.org/CodeSystem/audit-event-outcome'
+    display: Success
+
 agent:
+# in common user should be a person
 - who:
-    display: Grahame Grieve
-    identifier: {value: '95'}
+    reference: '#person'
+  requestor: true
   type:
     coding:
-    - {code: humanuser, system: 'http://terminology.hl7.org/CodeSystem/extra-security-role-type', display: human user}
-  requestor: true
-  networkString: 127.0.0.1
+    - code: 'humanuser'
+      system: 'http://terminology.hl7.org/CodeSystem/extra-security-role-type'
+      display: 'human user'
+
+# User agent
 - who:
-    identifier: {value: 2.16.840.1.113883.4.2, system: 'urn:oid:2.16.840.1.113883.4.2'}
+    reference: '#user-agent'
   requestor: false
-  networkString: Workstation1.ehr.familyclinic.com
+  networkUri: '<IP Address>'
+
+# IDP
+- who:
+    reference: '#idp'
+  requestor: false
+  networkUri: ... # IP address in the internal network
+
+contained:
+- id: 'user-agent'
+  resourceType: 'Device'
+  displayName: '<USER_AGENT>'
+- id: 'idp'
+  resourceType: 'Device'
+- id: 'person'
+  resourceType: 'Person'
 ```
