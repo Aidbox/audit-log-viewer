@@ -1,6 +1,6 @@
 # Logout success
 
-Based on the [example login](http://build.fhir.org/audit-event-example-login.html).
+Based on the [example logout](http://build.fhir.org/audit-event-example-logout.html).
 
 ```yaml
 id: example-login-success
