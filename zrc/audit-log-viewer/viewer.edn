@@ -57,7 +57,7 @@
           {:path [:agent 0 :who :display] :name "User"}
           {:path [:agent 1 :networkString] :name "Workstation"}
           {:path [:occuredDateTime] :name "Timestamp"}
-          {:path [:entity 0 :what :id] :name "Application / Device"}]}
+          {:path [:entity 0 :what :id] :name "Application was re-configured"}]}
 
    {:when [{:path [:category {} :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] :value "110139"}
            {:path [:code :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] :value "110122"}
