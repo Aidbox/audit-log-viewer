@@ -1,6 +1,6 @@
 # Login failure
 
-Base on the (example login)[http://build.fhir.org/audit-event-example-login.html].
+Base on the [example login](http://build.fhir.org/audit-event-example-login.html).
 
 ```yaml
 id: example-login-failure
