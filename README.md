@@ -15,6 +15,6 @@ This repo contains the set of `AuditEvent` resource samples. Each sample is base
 | User fails to login                | `:example-login-failure`                        |
 | User logins                        | `:example-login-success`                        |
 | User logs out                      | `:example-logout-success`                       |
-| User remote sessions starts        | `:example-remote-login-success`                 |
-| User remote sessions ends          | `:example-remote-logout-success`                |
+| User remote session starts         | `:example-remote-login-success`                 |
+| User remote session ends           | `:example-remote-logout-success`                |
 | Software configuration was updated | `:example-service-event-software-configuration` |
