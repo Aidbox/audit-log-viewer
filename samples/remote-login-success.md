@@ -1,5 +1,8 @@
 # Remote login success
 
+Questions:
+- what is the use case for that?
+
 Base on the (example login)[http://build.fhir.org/audit-event-example-login.html].
 
 ```yaml
