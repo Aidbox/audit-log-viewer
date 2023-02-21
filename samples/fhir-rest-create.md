@@ -6,6 +6,17 @@ Questions:
 - AuditEvent.entity.agent. is it convenient to link here FHIR Server where reseource was saved?
 
 
+
+- GET /Encounter?_revinclude=target:Provenance How many AuditEvent resources should be created?
+
+- How secure is client? is it just one who can use https?
+
+- > A smartphone app is an example of a Secure Application that has control over the security for the application, but not the rest of the mobile device software or hardware security. https://profiles.ihe.net/ITI/TF/Volume1/ch-9.html#9.1.1.2
+  May web application be a secure app in terms of BALP?
+  > The Secure Application does not have complete control over the full stack from hardware to user interface and external communications. It only has security services control over the actors with which it is grouped.
+
+
+
 ```yaml
 id: example-fhir-rest-create
 resourceType: AuditEventR5
