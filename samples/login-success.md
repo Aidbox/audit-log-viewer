@@ -36,9 +36,9 @@ category:
 
 code:
   coding:
-  - code: '110123'
+  - code: '110122'
     system: 'http://dicom.nema.org/resources/ontology/DCM'
-    display: Logout
+    display: 110123'
 
 outcome:
   code:
