@@ -8,7 +8,7 @@
   [{:name "Date" :type :datetime :path [:recorded] :fallback "—"}
    {:name "User" :path [:agent 0 :who :display]}
    {:name "Event" :path [:code :coding 0 :display]}
-   {:name "Patient" :path [:patient :reference] :fallback "—"}]
+   {:name "Patient" :path [:patient :id] :fallback "—"}]
 
   :views
   [{:when [{:path [:category {} :coding {:system "http://dicom.nema.org/resources/ontology/DCM"} :code] :value "110114" }
